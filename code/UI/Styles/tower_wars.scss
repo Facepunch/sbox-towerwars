@@ -1,0 +1,12 @@
+﻿mousecontrol {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(black, 0);
+
+    // so this is interactable by the GUI system
+    opacity: 1;
+    pointer-events: all;
+}
