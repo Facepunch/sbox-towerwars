@@ -2,7 +2,7 @@
 
 namespace TowerWars;
 
-public partial class Pawn : Entity
+public partial class Player : Entity
 {
 	private Vector3 _wishPosition;
 
@@ -22,11 +22,11 @@ public partial class Pawn : Entity
 
 		var hSpeed = Input.Down( InputButton.Run ) ? 2000 : 1000;
 		var movement = new Vector3( Input.Forward, Input.Left ).Normal * hSpeed;
-		movement.z = -Input.MouseWheel * 2000;
+		movement.z = -Input.MouseWheel * 3000;
 
 		_wishPosition += movement * Time.Delta;
 
-		Position = Vector3.Lerp( Position, _wishPosition, 0.1f );
+		Position = Vector3.Lerp( Position, _wishPosition, 0.25f );
 	}
 
 	/// <summary>
