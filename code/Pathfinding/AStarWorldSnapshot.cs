@@ -89,15 +89,15 @@ public class AStarWorldSnapshot
 			}
 
 			var currentPos = FromIndex( current.Index );
-			CheckNeighbor( new Position(currentPos.X + 1, currentPos.Y + 1) );
-			CheckNeighbor( new Position(currentPos.X + 1, currentPos.Y + 0) );
-			CheckNeighbor( new Position(currentPos.X + 0, currentPos.Y + 1) );
-			CheckNeighbor( new Position(currentPos.X + 1, currentPos.Y - 1) );
+			//CheckNeighbor( new Position( currentPos.X + 1, currentPos.Y + 1 ) );
+			CheckNeighbor( new Position( currentPos.X + 1, currentPos.Y + 0 ) );
+			CheckNeighbor( new Position( currentPos.X + 0, currentPos.Y + 1 ) );
+			//CheckNeighbor( new Position( currentPos.X + 1, currentPos.Y - 1 ) );
 
-			CheckNeighbor( new Position(currentPos.X - 1, currentPos.Y - 1) );
-			CheckNeighbor( new Position(currentPos.X - 1, currentPos.Y - 0) );
-			CheckNeighbor( new Position(currentPos.X - 0, currentPos.Y - 1) );
-			CheckNeighbor( new Position(currentPos.X - 1, currentPos.Y + 1) );
+			//CheckNeighbor( new Position( currentPos.X - 1, currentPos.Y - 1 ) );
+			CheckNeighbor( new Position( currentPos.X - 1, currentPos.Y - 0 ) );
+			CheckNeighbor( new Position( currentPos.X - 0, currentPos.Y - 1 ) );
+			//CheckNeighbor( new Position( currentPos.X - 1, currentPos.Y + 1 ) );
 
 			void CheckNeighbor( Position position )
 			{
@@ -106,7 +106,7 @@ public class AStarWorldSnapshot
 					return;
 				}
 
-				var idx = position.Y * Width + position.X;
+				var idx = ToIndex( position );
 				if ( closed[idx] || _tiles[idx] )
 				{
 					return;

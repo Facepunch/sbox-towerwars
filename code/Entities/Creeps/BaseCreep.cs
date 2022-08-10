@@ -10,6 +10,13 @@ public abstract partial class BaseCreep : AnimatedEntity
 
 	private float _moveSpeed = 200f;
 
+	public override void Spawn()
+	{
+		base.Spawn();
+
+		PhysicsEnabled = false;
+	}
+
 	public void SetTarget( Vector3 position )
 	{
 		_targetPos = position.WithZ( Position.z );
@@ -35,6 +42,8 @@ public abstract partial class BaseCreep : AnimatedEntity
 			else
 			{
 				Log.Warning( "no path to target!" );
+				_targetPos = null;
+				return;
 			}
 		}
 

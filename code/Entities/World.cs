@@ -65,6 +65,8 @@ public class World : Entity
 
 	public bool TryFindPath( Vector3 from, Vector3 to, out List<Vector2> path )
 	{
+		//DebugDrawWorld();
+
 		var result = _pathfindWorld.GetSnapshot().FindPath( WorldToPathfind( from ), WorldToPathfind( to ) );
 
 		if ( result == null )
@@ -79,6 +81,7 @@ public class World : Entity
 
 	private Position WorldToPathfind( Vector3 position )
 	{
+		position = Utilities.SnapToCell( position );
 		return new Position(
 			(int)((position.x - _worldBounds.Mins.x) / Utilities.CellSize),
 			(int)((position.y - _worldBounds.Mins.y) / Utilities.CellSize) );
@@ -89,5 +92,23 @@ public class World : Entity
 		return new Vector2(
 			_worldBounds.Mins.x + position.X * Utilities.CellSize,
 			_worldBounds.Mins.y + position.Y * Utilities.CellSize );
+	}
+
+	private void DebugDrawWorld()
+	{
+		var rotation = Rotation.From( 90, 0, 0 );
+		for ( var y = 0; y < _pathfindWorld.Height; y++ )
+		{
+			for ( var x = 0; x < _pathfindWorld.Width; x++ )
+			{
+				var pos = new Position( x, y );
+				if ( !_pathfindWorld[pos] )
+				{
+					continue;
+				}
+
+				DebugOverlay.Circle( PathfindToWorld( pos ), rotation, Utilities.CellSize / 2, Color.Red, 5, false );
+			}
+		}
 	}
 }

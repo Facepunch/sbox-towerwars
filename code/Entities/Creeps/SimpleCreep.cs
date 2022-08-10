@@ -9,8 +9,5 @@ public partial class SimpleCreep : BaseCreep
 		base.Spawn();
 
 		SetModel( "models/simple_creep.vmdl" );
-
-		EnableAllCollisions = true;
-		SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 	}
 }
