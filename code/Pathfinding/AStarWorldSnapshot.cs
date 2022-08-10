@@ -8,16 +8,18 @@ namespace TowerWars.Pathfinding;
 
 public class AStarWorldSnapshot
 {
+	public ulong Version { get; }
 	public int Width { get; }
 	public int Height { get; }
 
 	private readonly bool[] _tiles;
 
-	public AStarWorldSnapshot( int width, int height, bool[] tiles )
+	public AStarWorldSnapshot( ulong version, int width, int height, bool[] tiles )
 	{
 		if ( tiles == null ) throw new ArgumentNullException( nameof( tiles ) );
 		if ( tiles.Length != width * height ) throw new ArgumentException( "Length of tiles does not match dimensions", nameof( tiles ) );
 
+		Version = version;
 		Width = width;
 		Height = height;
 		_tiles = tiles;
@@ -83,14 +85,19 @@ public class AStarWorldSnapshot
 				ArrayPool<Node>.Shared.Return( nodes );
 				ArrayPool<bool>.Shared.Return( closed );
 
-				return new AStarPath( path );
+				return new AStarPath( Version, path );
 			}
 
 			var currentPos = FromIndex( current.Index );
-			CheckNeighbor( new Position(currentPos.X + 1, currentPos.Y) );
-			CheckNeighbor( new Position(currentPos.X, currentPos.Y + 1) );
-			CheckNeighbor( new Position(currentPos.X - 1, currentPos.Y) );
-			CheckNeighbor( new Position(currentPos.X, currentPos.Y - 1) );
+			CheckNeighbor( new Position(currentPos.X + 1, currentPos.Y + 1) );
+			CheckNeighbor( new Position(currentPos.X + 1, currentPos.Y + 0) );
+			CheckNeighbor( new Position(currentPos.X + 0, currentPos.Y + 1) );
+			CheckNeighbor( new Position(currentPos.X + 1, currentPos.Y - 1) );
+
+			CheckNeighbor( new Position(currentPos.X - 1, currentPos.Y - 1) );
+			CheckNeighbor( new Position(currentPos.X - 1, currentPos.Y - 0) );
+			CheckNeighbor( new Position(currentPos.X - 0, currentPos.Y - 1) );
+			CheckNeighbor( new Position(currentPos.X - 1, currentPos.Y + 1) );
 
 			void CheckNeighbor( Position position )
 			{

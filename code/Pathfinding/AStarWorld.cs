@@ -41,7 +41,7 @@ public class AStarWorld
 			return _lastSnapshot;
 		}
 
-		var snapshot = new AStarWorldSnapshot( Width, Height, (bool[])_tiles.Clone() );
+		var snapshot = new AStarWorldSnapshot( _version, Width, Height, (bool[])_tiles.Clone() );
 		
 		_lastSnapshot = snapshot;
 		_lastSnapshotVersion = _version;

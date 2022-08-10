@@ -5,12 +5,12 @@ namespace TowerWars.Pathfinding;
 
 public readonly struct AStarPath
 {
-	public bool Found { get; }
+	public ulong Version { get; }
 	public List<Position> Path { get; }
 
-	public AStarPath( List<Position> path )
+	public AStarPath( ulong version, List<Position> path )
 	{
-		Found = true;
+		Version = version;
 		Path = path ?? throw new ArgumentNullException( nameof(path) );
 	}
 }

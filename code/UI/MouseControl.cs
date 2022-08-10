@@ -22,32 +22,25 @@ public class MouseControl : Panel
 
 	public override void OnButtonEvent( ButtonEvent e )
 	{
-		if ( e.Pressed && e.Button == "mouseright" )
+		if ( e.Pressed )
 		{
-			Log.Info(Map.Physics.Body.GetBounds());
-			var world = new AStarWorld( 10, 10 );
-			world[new Position( 1, 0 )] = true;
-
-			var snapshot = world.GetSnapshot();
-			var path = snapshot.FindPath( new Position( 0, 0 ), new Position( 2, 0 ) );
-			if ( path != null )
+			if ( e.Button == "mouseright" && TryPickPosition( out var movePos ) )
 			{
-				Log.Info( string.Join( ", ", path.Value.Path ) );
-			}
-			else
-			{
-				Log.Info( "no path" );
+				Commands.CreepMoveTest( movePos );
+				return;
 			}
 
-			return;
-		}
+			if ( e.Button == "mouseleft" && TryPickPosition( out var towerPos ) )
+			{
+				Commands.SpawnTower( towerPos );
+				return;
+			}
 
-		if ( e.Pressed && e.Button == "mouseleft" && TryPickPosition( out var position ) )
-		{
-			Log.Info( e.Button );
-
-			Commands.SpawnTest( position );
-			return;
+			if ( e.Button == "mousemiddle" && TryPickPosition( out var creepPos ) )
+			{
+				Commands.SpawnCreepTest( creepPos );
+				return;
+			}
 		}
 
 		base.OnButtonEvent( e );

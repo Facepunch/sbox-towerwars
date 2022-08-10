@@ -13,10 +13,13 @@ namespace TowerWars;
 /// </summary>
 public partial class TowerWarsGame : Game
 {
-	public TowerWarsGame()
+	public override void PostLevelLoaded()
 	{
+		base.PostLevelLoaded();
+
 		if ( IsServer )
 		{
+			new World();
 			new Hud();
 		}
 	}
@@ -42,7 +45,7 @@ public partial class TowerWarsGame : Game
 		if ( randomSpawnPoint != null )
 		{
 			var tx = randomSpawnPoint.Transform;
-			tx.Position = tx.Position + Vector3.Up * 200.0f; // raise it up
+			tx.Position = tx.Position + Vector3.Up * 2000.0f; // raise it up
 			pawn.Transform = tx;
 		}
 	}
