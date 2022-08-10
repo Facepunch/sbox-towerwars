@@ -14,7 +14,8 @@ public abstract partial class BaseCreep : AnimatedEntity
 	{
 		base.Spawn();
 
-		PhysicsEnabled = false;
+		EnableAllCollisions = true;
+		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 	}
 
 	public void SetTarget( Vector3 position )

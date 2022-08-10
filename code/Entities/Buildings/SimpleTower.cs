@@ -1,8 +1,14 @@
 ﻿using Sandbox;
 using TowerWars;
 
-public partial class SimpleTower : BaseBuilding
+public partial class SimpleTower : BaseProjectileTower
 {
+	public SimpleTower()
+	{
+		AttackInterval = 0.5f;
+		Range = 200f;
+	}
+
 	public override void Spawn()
 	{
 		base.Spawn();
