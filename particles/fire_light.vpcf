@@ -2,6 +2,12 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_nBehaviorVersion = 10
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+		},
+	]
 	m_Emitters = 
 	[
 		{
@@ -53,10 +59,19 @@
 			}
 		},
 	]
-	m_Initializers = 
+	m_Operators = 
 	[
 		{
-			_class = "C_INIT_CreateWithinBox"
+			_class = "C_OP_BasicMovement"
+			m_Gravity = [ 0.0, 0.0, 0.1 ]
+			m_nMaxConstraintPasses = 1
+		},
+	]
+	m_Constraints = 
+	[
+		{
+			_class = "C_OP_BoxConstraint"
+			m_bLocalSpace = true
 		},
 	]
 	m_Renderers = 
@@ -308,12 +323,6 @@
 					m_vDomainMaxs = [ 0.0, 0.0 ]
 				}
 			}
-		},
-	]
-	m_controlPointConfigurations = 
-	[
-		{
-			m_name = "preview"
 		},
 	]
 }
