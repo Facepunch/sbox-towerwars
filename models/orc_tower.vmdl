@@ -40,7 +40,104 @@
 						import_filter = 
 						{
 							exclude_by_default = false
-							exception_list = [  ]
+							exception_list = 
+							[
+								"orc_tower22",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "particle"
+						game_keys = 
+						{
+							name = resource:"particles/fire_particle.vpcf"
+							attachment_point = ""
+							attachment_type = "5"
+							attachment_offset = [ 298.119, -257.723, 801.604 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "particle"
+						game_keys = 
+						{
+							name = resource:"particles/fire_particle.vpcf"
+							attachment_point = ""
+							attachment_type = "5"
+							attachment_offset = [ 298.119, 262.277, 801.604 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "particle"
+						game_keys = 
+						{
+							name = resource:"particles/fire_particle.vpcf"
+							attachment_point = ""
+							attachment_type = "5"
+							attachment_offset = [ 234.119, 325.277, 801.604 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "particle"
+						game_keys = 
+						{
+							name = resource:"particles/fire_particle.vpcf"
+							attachment_point = ""
+							attachment_type = "5"
+							attachment_offset = [ -254.881, 325.277, 801.604 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "particle"
+						game_keys = 
+						{
+							name = resource:"particles/fire_particle.vpcf"
+							attachment_point = ""
+							attachment_type = "5"
+							attachment_offset = [ -318.881, 250.277, 801.604 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "particle"
+						game_keys = 
+						{
+							name = resource:"particles/fire_particle.vpcf"
+							attachment_point = ""
+							attachment_type = "5"
+							attachment_offset = [ -318.881, -259.723, 801.604 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "particle"
+						game_keys = 
+						{
+							name = resource:"particles/fire_particle.vpcf"
+							attachment_point = ""
+							attachment_type = "5"
+							attachment_offset = [ -252.881, -323.723, 801.604 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "particle"
+						game_keys = 
+						{
+							name = resource:"particles/fire_particle.vpcf"
+							attachment_point = ""
+							attachment_type = "5"
+							attachment_offset = [ 236.119, -323.723, 801.604 ]
 						}
 					},
 				]
