@@ -32,7 +32,7 @@
 						filename = "models/orc-tower.obj"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
+						import_scale = 0.1
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
@@ -60,7 +60,7 @@
 							name = resource:"particles/fire_particle.vpcf"
 							attachment_point = ""
 							attachment_type = "5"
-							attachment_offset = [ 298.119, -257.723, 801.604 ]
+							attachment_offset = [ 29.8119, -25.7723, 80.1604 ]
 						}
 					},
 					{
@@ -71,7 +71,7 @@
 							name = resource:"particles/fire_particle.vpcf"
 							attachment_point = ""
 							attachment_type = "5"
-							attachment_offset = [ 298.119, 262.277, 801.604 ]
+							attachment_offset = [ 29.8119, 26.2277, 80.1604 ]
 						}
 					},
 					{
@@ -82,7 +82,7 @@
 							name = resource:"particles/fire_particle.vpcf"
 							attachment_point = ""
 							attachment_type = "5"
-							attachment_offset = [ 234.119, 325.277, 801.604 ]
+							attachment_offset = [ 23.4119, 32.5277, 80.1604 ]
 						}
 					},
 					{
@@ -93,7 +93,7 @@
 							name = resource:"particles/fire_particle.vpcf"
 							attachment_point = ""
 							attachment_type = "5"
-							attachment_offset = [ -254.881, 325.277, 801.604 ]
+							attachment_offset = [ -25.4881, 32.5277, 80.1604 ]
 						}
 					},
 					{
@@ -104,7 +104,7 @@
 							name = resource:"particles/fire_particle.vpcf"
 							attachment_point = ""
 							attachment_type = "5"
-							attachment_offset = [ -318.881, 250.277, 801.604 ]
+							attachment_offset = [ -31.8881, 25.0277, 80.1604 ]
 						}
 					},
 					{
@@ -115,7 +115,7 @@
 							name = resource:"particles/fire_particle.vpcf"
 							attachment_point = ""
 							attachment_type = "5"
-							attachment_offset = [ -318.881, -259.723, 801.604 ]
+							attachment_offset = [ -31.8881, -25.9723, 80.1604 ]
 						}
 					},
 					{
@@ -126,7 +126,7 @@
 							name = resource:"particles/fire_particle.vpcf"
 							attachment_point = ""
 							attachment_type = "5"
-							attachment_offset = [ -252.881, -323.723, 801.604 ]
+							attachment_offset = [ -25.2881, -32.3723, 80.1604 ]
 						}
 					},
 					{
@@ -137,8 +137,23 @@
 							name = resource:"particles/fire_particle.vpcf"
 							attachment_point = ""
 							attachment_type = "5"
-							attachment_offset = [ 236.119, -323.723, 801.604 ]
+							attachment_offset = [ 23.6119, -32.3723, 80.1604 ]
 						}
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "muzzle"
+						parent_bone = ""
+						relative_origin = [ 0.0, 0.0, 75.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
 					},
 				]
 			},

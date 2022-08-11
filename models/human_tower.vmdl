@@ -57,9 +57,9 @@
 						parent_bone = ""
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ 0.0, 0.0, 0.0 ]
+						origin = [ 0.0, 0.0, 50.0 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 75.0, 75.0, 10.0 ]
+						dimensions = [ 75.0, 75.0, 100.0 ]
 					},
 				]
 			},
@@ -71,7 +71,7 @@
 						_class = "Attachment"
 						name = "muzzle"
 						parent_bone = ""
-						relative_origin = [ 0.0, 0.0, 350.0 ]
+						relative_origin = [ 0.0, 0.0, 100.0 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false

@@ -29,9 +29,11 @@ public abstract partial class BaseProjectileTower : BaseTower
 	{
 		if ( creep.IsValid() )
 		{
+			var origin = GetAttachment( "muzzle" )?.Position ?? Position;
+
 			new Projectile
 			{
-				Position = Position,
+				Position = origin,
 				Target = creep,
 				Duration = duration,
 			}.Start();
