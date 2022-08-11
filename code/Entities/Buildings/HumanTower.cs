@@ -1,9 +1,9 @@
 ﻿using Sandbox;
 using TowerWars;
 
-public partial class SimpleTower : BaseProjectileTower
+public partial class HumanTower : BaseProjectileTower
 {
-	public SimpleTower()
+	public HumanTower()
 	{
 		AttackInterval = 0.5f;
 		Damage = 10f;
@@ -14,7 +14,7 @@ public partial class SimpleTower : BaseProjectileTower
 	{
 		base.Spawn();
 		
-		SetModel("models/simple_tower.vmdl");
+		SetModel("models/human_tower.vmdl");
 		
 		EnableAllCollisions = true;
 		SetupPhysicsFromModel( PhysicsMotionType.Static );

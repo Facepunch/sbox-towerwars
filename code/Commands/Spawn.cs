@@ -12,7 +12,7 @@ public static partial class Commands
 
 		if ( World.ServerInstance.TryPlace( position ) )
 		{
-			var tower = new SimpleTower();
+			var tower = new HumanTower();
 			tower.Position = position;
 		}
 		else

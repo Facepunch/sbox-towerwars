@@ -8,7 +8,7 @@ namespace TowerWars;
 
 public class World : Entity
 {
-	public const float CellSize = 40;
+	public const float CellSize = 75;
 
 	public static World ServerInstance { get; private set; }
 
