@@ -8,10 +8,12 @@ public static partial class Commands
 	[ConCmd.Server]
 	public static void SpawnTower( Vector3 position )
 	{
+		position = Utilities.SnapToCell( position );
+
 		if ( World.ServerInstance.TryPlace( position ) )
 		{
 			var tower = new SimpleTower();
-			tower.Position = Utilities.SnapForSpawning( position );
+			tower.Position = position;
 		}
 		else
 		{
