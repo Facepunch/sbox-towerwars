@@ -32,10 +32,9 @@ public abstract partial class BaseProjectileTower : BaseTower
 			new Projectile
 			{
 				Position = Position,
-				StartPosition = Position,
 				Target = creep,
 				Duration = duration,
-			};
+			}.Start();
 		}
 	}
 }

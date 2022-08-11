@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Sandbox;
 using TowerWars.Pathfinding;
@@ -7,6 +8,8 @@ namespace TowerWars;
 
 public class World : Entity
 {
+	public const float CellSize = 40;
+
 	public static World ServerInstance { get; private set; }
 
 	private BBox _worldBounds;
@@ -44,8 +47,8 @@ public class World : Entity
 	private void Initialize()
 	{
 		var mapBounds = Map.Physics.Body.GetBounds();
-		var width = (int)((mapBounds.Size.x + Utilities.CellSize - 1) / Utilities.CellSize);
-		var height = (int)((mapBounds.Size.y + Utilities.CellSize - 1) / Utilities.CellSize);
+		var width = (int)((mapBounds.Size.x + CellSize - 1) / CellSize);
+		var height = (int)((mapBounds.Size.y + CellSize - 1) / CellSize);
 
 		_worldBounds = mapBounds;
 		_pathfindWorld = new AStarWorld( width, height );
@@ -79,19 +82,23 @@ public class World : Entity
 		return true;
 	}
 
+	public Vector3 SnapToCell( Vector3 position )
+	{
+		return new Vector3( PathfindToWorld( WorldToPathfind( position ) ), 0 );
+	}
+
 	private Position WorldToPathfind( Vector3 position )
 	{
-		position = Utilities.SnapToCell( position );
 		return new Position(
-			(int)((position.x - _worldBounds.Mins.x) / Utilities.CellSize),
-			(int)((position.y - _worldBounds.Mins.y) / Utilities.CellSize) );
+			(int)((position.x - _worldBounds.Mins.x) / CellSize),
+			(int)((position.y - _worldBounds.Mins.y) / CellSize) );
 	}
 
 	private Vector2 PathfindToWorld( Position position )
 	{
 		return new Vector2(
-			_worldBounds.Mins.x + position.X * Utilities.CellSize,
-			_worldBounds.Mins.y + position.Y * Utilities.CellSize );
+			(_worldBounds.Mins.x + position.X * CellSize) + (CellSize / 2),
+			(_worldBounds.Mins.y + position.Y * CellSize) + (CellSize / 2) );
 	}
 
 	private void DebugDrawWorld()
@@ -107,7 +114,8 @@ public class World : Entity
 					continue;
 				}
 
-				DebugOverlay.Circle( PathfindToWorld( pos ), rotation, Utilities.CellSize / 2, Color.Red, 5, false );
+				var color = _pathfindWorld[pos] ? Color.Red : Color.Black;
+				DebugOverlay.Circle( PathfindToWorld( pos ), rotation, CellSize / 2, color, 5, false );
 			}
 		}
 	}

@@ -8,7 +8,7 @@ public static partial class Commands
 	[ConCmd.Server]
 	public static void SpawnTower( Vector3 position )
 	{
-		position = Utilities.SnapToCell( position );
+		position = World.ServerInstance.SnapToCell( position );
 
 		if ( World.ServerInstance.TryPlace( position ) )
 		{

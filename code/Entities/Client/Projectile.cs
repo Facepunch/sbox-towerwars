@@ -5,19 +5,23 @@ namespace TowerWars;
 
 public class Projectile : ModelEntity
 {
-	public Vector3 StartPosition { get; init; }
 	public BaseCreep Target { get; init; }
 	public float Duration { get; init; }
 
+	private Vector3 _startPosition;
 	private TimeSince _sinceCreated;
 
 	public override void Spawn()
 	{
 		base.Spawn();
-
-		_sinceCreated = 0;
 		
 		SetModel( "models/projectile.vmdl" );
+	}
+
+	public void Start()
+	{
+		_startPosition = Position;
+		_sinceCreated = 0;
 	}
 
 	[Event.Tick.Client]
@@ -30,6 +34,6 @@ public class Projectile : ModelEntity
 		}
 
 		// todo: shorten duration if the target moved closer?
-		Position = Vector3.Lerp( StartPosition, Target.Position, Math.Clamp( _sinceCreated / Duration, 0, 1 ) );
+		Position = Vector3.Lerp( _startPosition, Target.Position, Math.Clamp( _sinceCreated / Duration, 0, 1 ) );
 	}
 }
