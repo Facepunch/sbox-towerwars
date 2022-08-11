@@ -1,0 +1,11 @@
+
+Layer0
+{
+	shader "complex.vfx"
+
+	TextureColor "materials/orc-tower/orc-tower_color.png"
+	TextureAmbientOcclusion "materials/default/default_ao.tga"
+	TextureNormal "materials/orc-tower/orc-tower_normal.png"
+	TextureRoughness "materials/orc-tower/orc-tower_rough.png"
+
+}
