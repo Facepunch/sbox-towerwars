@@ -20,6 +20,7 @@ public abstract partial class BaseProjectileTower : BaseTower
 			var duration = distance / 250f;
 
 			ClientProjectile( closestCreep, duration );
+			HurtCreep( closestCreep, duration );
 		}
 	}
 

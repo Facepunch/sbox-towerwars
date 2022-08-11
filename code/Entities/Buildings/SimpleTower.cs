@@ -6,6 +6,7 @@ public partial class SimpleTower : BaseProjectileTower
 	public SimpleTower()
 	{
 		AttackInterval = 0.5f;
+		Damage = 10f;
 		Range = 200f;
 	}
 

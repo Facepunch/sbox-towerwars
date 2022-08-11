@@ -5,10 +5,10 @@ namespace TowerWars;
 
 public abstract partial class BaseCreep : AnimatedEntity
 {
+	public float MoveSpeed { get; init; }
+
 	private Vector3? _targetPos;
 	private List<Vector2> _waypoints;
-
-	private float _moveSpeed = 200f;
 
 	public override void Spawn()
 	{
@@ -48,7 +48,7 @@ public abstract partial class BaseCreep : AnimatedEntity
 			}
 		}
 
-		var moveDistance = _moveSpeed * Time.Delta;
+		var moveDistance = MoveSpeed * Time.Delta;
 		var position = (Vector2)Position;
 
 		while ( moveDistance > 0 && _waypoints.Count > 0 )
@@ -69,5 +69,10 @@ public abstract partial class BaseCreep : AnimatedEntity
 		}
 
 		Position = new Vector3( position, Position.z ); // todo: raycast down to find correct Z
+	}
+
+	public void Hurt( float damage )
+	{
+		TakeDamage( new DamageInfo { Damage = damage } );
 	}
 }
