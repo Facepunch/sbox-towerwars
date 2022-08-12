@@ -14,6 +14,7 @@ public class World : Entity
 
 	private BBox _worldBounds;
 	private AStarWorld _pathfindWorld;
+	private List<NoBuildZone> _noBuildZones;
 
 	public override void Spawn()
 	{
@@ -58,20 +59,29 @@ public class World : Entity
 			foreach ( var position in obstacle.EnumerateCells( this ) )
 			{
 				if ( position.X >= 0 && position.X < _pathfindWorld.Width &&
-				     position.Y >= 0 && position.Y < _pathfindWorld.Height )
+					 position.Y >= 0 && position.Y < _pathfindWorld.Height )
 				{
 					_pathfindWorld[position] = true;
 				}
 			}
 		}
+
+		_noBuildZones = All.OfType<NoBuildZone>().ToList();
 	}
 
 	public bool TryPlace( Vector3 position )
 	{
+		if ( _noBuildZones.Any( z => z.BoundingBox.Contains( new BBox( position ) ) ) )
+		{
+			Log.Warning( "cannot build here" );
+			return false;
+		}
+
 		var pathfindPos = WorldToPathfind( position );
 		if ( _pathfindWorld[pathfindPos] )
 		{
-			return false; // occupied
+			Log.Warning( "occupied" );
+			return false;
 		}
 
 		_pathfindWorld[pathfindPos] = true;
@@ -87,7 +97,7 @@ public class World : Entity
 
 		if ( result == null )
 		{
-			Log.Info($"{from} {startPos}");
+			Log.Info( $"{from} {startPos}" );
 			DebugDrawWorld();
 
 			path = null;

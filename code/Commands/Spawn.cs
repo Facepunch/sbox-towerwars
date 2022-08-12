@@ -20,10 +20,6 @@ public static partial class Commands
 			var tower = ConstructTower( type );
 			tower.Position = position;
 		}
-		else
-		{
-			Log.Warning( "occupied" );
-		}
 
 		static BaseTower ConstructTower( TowerType type ) => type switch
 		{
