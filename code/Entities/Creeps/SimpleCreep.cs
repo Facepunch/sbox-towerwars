@@ -1,11 +1,13 @@
-﻿namespace TowerWars;
+﻿using Sandbox;
+
+namespace TowerWars;
 
 public partial class SimpleCreep : BaseCreep
 {
 	public SimpleCreep()
 	{
-		MoveSpeed = 200f;
-		Health = 100f;
+		MoveSpeed = Rand.Float(200, 500);
+		Health = Rand.Float( 100, 400 );
 	}
 
 	public override void Spawn()

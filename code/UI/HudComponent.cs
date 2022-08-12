@@ -7,6 +7,7 @@ namespace TowerWars;
 public class HudComponent : Panel
 {
 	public Hud Hud { get; private set; }
+	public bool IsSelected => ReferenceEquals( Hud?.Selected, this );
 
 	public virtual void Initialize(Hud hud)
 	{

@@ -19,5 +19,10 @@
         margin: 3px;
         padding: 6px;
         cursor: pointer;
+
+        &.selected {
+            background-color: #777;
+            font-weight: bold;
+        }
     }
 }
