@@ -52,6 +52,18 @@ public class World : Entity
 
 		_worldBounds = mapBounds;
 		_pathfindWorld = new AStarWorld( width, height );
+
+		foreach ( var obstacle in All.OfType<ObstacleEntity>() )
+		{
+			foreach ( var position in obstacle.EnumerateCells( this ) )
+			{
+				if ( position.X >= 0 && position.X < _pathfindWorld.Width &&
+				     position.Y >= 0 && position.Y < _pathfindWorld.Height )
+				{
+					_pathfindWorld[position] = true;
+				}
+			}
+		}
 	}
 
 	public bool TryPlace( Vector3 position )
@@ -87,14 +99,14 @@ public class World : Entity
 		return new Vector3( PathfindToWorld( WorldToPathfind( position ) ), 0 );
 	}
 
-	private Position WorldToPathfind( Vector3 position )
+	public Position WorldToPathfind( Vector3 position )
 	{
 		return new Position(
 			(int)((position.x - _worldBounds.Mins.x) / CellSize),
 			(int)((position.y - _worldBounds.Mins.y) / CellSize) );
 	}
 
-	private Vector2 PathfindToWorld( Position position )
+	public Vector2 PathfindToWorld( Position position )
 	{
 		return new Vector2(
 			(_worldBounds.Mins.x + position.X * CellSize) + (CellSize / 2),
