@@ -10,7 +10,7 @@ namespace TowerWars;
 [BoundsHelper( "extents", true )]
 public class ObstacleEntity : Entity
 {
-	[Property]
+	[Property, DefaultValue("100 100 100")]
 	public Vector3 Extents { get; set; } = new Vector3( 100 );
 
 	public IEnumerable<Position> EnumerateCells( World world )

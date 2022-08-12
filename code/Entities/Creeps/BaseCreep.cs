@@ -27,7 +27,7 @@ public abstract partial class BaseCreep : AnimatedEntity
 	[Event.Tick.Server]
 	public void Tick()
 	{
-		if ( _targetPos == null || _waypoints is { Count: 0 } )
+		if ( _targetPos == null )
 		{
 			_targetPos = null;
 			_waypoints = null;
@@ -43,7 +43,7 @@ public abstract partial class BaseCreep : AnimatedEntity
 			else
 			{
 				Log.Warning( "no path to target!" );
-				_targetPos = null;
+				Delete();
 				return;
 			}
 		}
@@ -69,6 +69,12 @@ public abstract partial class BaseCreep : AnimatedEntity
 		}
 
 		Position = new Vector3( position, Position.z ); // todo: raycast down to find correct Z
+
+		if ( _waypoints.Count == 0 )
+		{
+			Log.Info( "hit objective" );
+			Delete();
+		}
 	}
 
 	public void Hurt( float damage )

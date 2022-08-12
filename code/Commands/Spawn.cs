@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Sandbox;
 
 namespace TowerWars;
@@ -34,21 +33,5 @@ public static partial class Commands
 			TowerType.Elf => new ElfTower(),
 			_ => throw new NotSupportedException( $"{type}" ),
 		};
-	}
-
-	[ConCmd.Server]
-	public static void SpawnCreepTest( Vector3 position )
-	{
-		var creep = new SimpleCreep();
-		creep.Position = position;
-	}
-
-	[ConCmd.Server]
-	public static void CreepMoveTest( Vector3 position )
-	{
-		foreach ( var creep in Entity.All.OfType<BaseCreep>() )
-		{
-			creep.SetTarget( position );
-		}
 	}
 }

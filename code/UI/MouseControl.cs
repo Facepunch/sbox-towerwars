@@ -23,21 +23,9 @@ public class MouseControl : HudComponent
 	{
 		if ( e.Pressed )
 		{
-			if ( e.Button == "mouseright" && TryPickPosition( out var movePos, out _ ) )
-			{
-				Commands.CreepMoveTest( movePos );
-				return;
-			}
-
 			if ( e.Button == "mouseleft" && TryPickPosition( out var leftPos, out var leftEntity ) )
 			{
 				Hud.Selected?.OnLeftClick( leftPos, leftEntity );
-				return;
-			}
-
-			if ( e.Button == "mousemiddle" && TryPickPosition( out var creepPos, out _ ) )
-			{
-				Commands.SpawnCreepTest( creepPos );
 				return;
 			}
 		}

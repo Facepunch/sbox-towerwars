@@ -80,12 +80,16 @@ public class World : Entity
 
 	public bool TryFindPath( Vector3 from, Vector3 to, out List<Vector2> path )
 	{
-		//DebugDrawWorld();
+		var startPos = WorldToPathfind( from );
+		var endPos = WorldToPathfind( to );
 
-		var result = _pathfindWorld.GetSnapshot().FindPath( WorldToPathfind( from ), WorldToPathfind( to ) );
+		var result = _pathfindWorld.GetSnapshot().FindPath( startPos, endPos );
 
 		if ( result == null )
 		{
+			Log.Info($"{from} {startPos}");
+			DebugDrawWorld();
+
 			path = null;
 			return false;
 		}
