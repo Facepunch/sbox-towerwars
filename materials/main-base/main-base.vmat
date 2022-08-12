@@ -1,0 +1,11 @@
+
+Layer0
+{
+	shader "complex.vfx"
+
+	TextureColor "materials/main-base/main-base_color.png"
+	TextureAmbientOcclusion "materials/main-base/main-base_ao.png"
+	TextureNormal "materials/main-base/main-base_normal.png"
+	TextureRoughness "materials/main-base/main-base_rough.png"
+
+}
