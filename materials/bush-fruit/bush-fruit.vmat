@@ -1,0 +1,11 @@
+
+Layer0
+{
+	shader "complex.vfx"
+
+	TextureColor "materials/bush-fruit/bush-fruit_color.png"
+	TextureAmbientOcclusion "materials/bush-fruit/bush-fruit_ao.png"
+	TextureNormal "materials/bush-fruit/bush-fruit_normal.png"
+	TextureRoughness "materials/bush-fruit/bush-fruit_rough.png"
+
+}
