@@ -30,7 +30,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "models/undead-tower.obj"
-						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_translation = [ 0.0, 0.0, -10.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.1
 						align_origin_x_type = "None"
@@ -40,7 +40,10 @@
 						import_filter = 
 						{
 							exclude_by_default = false
-							exception_list = [  ]
+							exception_list = 
+							[
+								"undead_tower",
+							]
 						}
 					},
 				]

@@ -14,6 +14,9 @@ public abstract partial class BaseTower : BaseBuilding
 		base.Spawn();
 
 		_sinceLastAttack = Rand.Float( 0, AttackInterval );
+		
+		EnableAllCollisions = true;
+		SetupPhysicsFromModel( PhysicsMotionType.Static );
 	}
 
 	[Event.Tick.Server]

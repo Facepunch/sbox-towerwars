@@ -1,10 +1,9 @@
 ﻿using Sandbox;
 using Sandbox.UI;
-using TowerWars.Pathfinding;
 
 namespace TowerWars;
 
-public class MouseControl : Panel
+public class MouseControl : HudComponent
 {
 	private int _mouseWheel;
 
@@ -24,19 +23,19 @@ public class MouseControl : Panel
 	{
 		if ( e.Pressed )
 		{
-			if ( e.Button == "mouseright" && TryPickPosition( out var movePos ) )
+			if ( e.Button == "mouseright" && TryPickPosition( out var movePos, out _ ) )
 			{
 				Commands.CreepMoveTest( movePos );
 				return;
 			}
 
-			if ( e.Button == "mouseleft" && TryPickPosition( out var towerPos ) )
+			if ( e.Button == "mouseleft" && TryPickPosition( out var leftPos, out var leftEntity ) )
 			{
-				Commands.SpawnTower( towerPos );
+				Hud.Selected?.OnLeftClick( leftPos, leftEntity );
 				return;
 			}
 
-			if ( e.Button == "mousemiddle" && TryPickPosition( out var creepPos ) )
+			if ( e.Button == "mousemiddle" && TryPickPosition( out var creepPos, out _ ) )
 			{
 				Commands.SpawnCreepTest( creepPos );
 				return;
@@ -46,16 +45,18 @@ public class MouseControl : Panel
 		base.OnButtonEvent( e );
 	}
 
-	private static bool TryPickPosition( out Vector3 position, Entity ignoreEntity = null )
+	private static bool TryPickPosition( out Vector3 position, out Entity entity )
 	{
-		var result = TraceFromCursor().Ignore( ignoreEntity ).Run();
+		var result = TraceFromCursor().Run();
 		if ( result.Hit )
 		{
 			position = result.EndPosition;
+			entity = result.Entity;
 			return true;
 		}
 
 		position = Vector3.Zero;
+		entity = null;
 		return false;
 	}
 

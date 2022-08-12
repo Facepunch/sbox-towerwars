@@ -1,5 +1,4 @@
-﻿using Sandbox;
-using TowerWars;
+﻿using TowerWars;
 
 public partial class HumanTower : BaseProjectileTower
 {
@@ -12,11 +11,8 @@ public partial class HumanTower : BaseProjectileTower
 
 	public override void Spawn()
 	{
-		base.Spawn();
-		
 		SetModel("models/human_tower.vmdl");
-		
-		EnableAllCollisions = true;
-		SetupPhysicsFromModel( PhysicsMotionType.Static );
+
+		base.Spawn();
 	}
 }
