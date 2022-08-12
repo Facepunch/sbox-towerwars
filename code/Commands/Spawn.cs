@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Sandbox;
 
 namespace TowerWars;
@@ -15,7 +16,10 @@ public static partial class Commands
 	{
 		position = World.ServerInstance.SnapToCell( position );
 
-		if ( World.ServerInstance.TryPlace( position ) )
+		var spawner = Entity.All.OfType<CreepSpawner>().Single();
+		var objective = Entity.All.OfType<CreepObjective>().Single();
+
+		if ( World.ServerInstance.TryPlace( position, spawner.Position, objective.Position ) )
 		{
 			var tower = ConstructTower( type );
 			tower.Position = position;

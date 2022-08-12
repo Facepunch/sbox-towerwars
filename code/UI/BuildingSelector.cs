@@ -26,5 +26,6 @@ public class BuildingSelector : HudComponent
 	public override void OnLeftClick( Vector3 position, Entity entity )
 	{
 		Commands.SpawnTower( TowerType, position );
+		Hud.Select( null );
 	}
 }

@@ -25,6 +25,15 @@ public class AStarWorldSnapshot
 		_tiles = tiles;
 	}
 
+	public bool this[Position position]
+	{
+		get => _tiles[position.Y * Width + position.X];
+		set
+		{
+			_tiles[position.Y * Width + position.X] = value;
+		}
+	}
+
 	/*public Task<AStarPath> FindPath( Position start, Position end )
 	{
 		return GameTask.RunInThreadAsync( async () => FindPathImpl( start, end ) );

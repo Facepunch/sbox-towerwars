@@ -34,17 +34,20 @@ public class AStarWorld
 		}
 	}
 
-	public AStarWorldSnapshot GetSnapshot()
+	public AStarWorldSnapshot GetSnapshot(bool useCache = true)
 	{
-		if ( _lastSnapshot != null && _version == _lastSnapshotVersion )
+		if ( useCache && _lastSnapshot != null && _version == _lastSnapshotVersion )
 		{
 			return _lastSnapshot;
 		}
 
 		var snapshot = new AStarWorldSnapshot( _version, Width, Height, (bool[])_tiles.Clone() );
-		
-		_lastSnapshot = snapshot;
-		_lastSnapshotVersion = _version;
+
+		if ( useCache )
+		{
+			_lastSnapshot = snapshot;
+			_lastSnapshotVersion = _version;
+		}
 
 		return snapshot;
 	}

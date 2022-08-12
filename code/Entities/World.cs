@@ -69,7 +69,7 @@ public class World : Entity
 		_noBuildZones = All.OfType<NoBuildZone>().ToList();
 	}
 
-	public bool TryPlace( Vector3 position )
+	public bool TryPlace( Vector3 position, Vector3 from, Vector3 to )
 	{
 		if ( _noBuildZones.Any( z => z.BoundingBox.Contains( new BBox( position ) ) ) )
 		{
@@ -81,6 +81,15 @@ public class World : Entity
 		if ( _pathfindWorld[pathfindPos] )
 		{
 			Log.Warning( "occupied" );
+			return false;
+		}
+
+		var snapshot = _pathfindWorld.GetSnapshot( useCache: false );
+		snapshot[pathfindPos] = true;
+		var result = snapshot.FindPath( WorldToPathfind( from ), WorldToPathfind( to ) );
+		if ( result == null )
+		{
+			Log.Warning("cannot block the objective");
 			return false;
 		}
 
