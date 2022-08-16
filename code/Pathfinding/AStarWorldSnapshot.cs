@@ -98,17 +98,17 @@ public class AStarWorldSnapshot
 			}
 
 			var currentPos = FromIndex( current.Index );
-			//CheckNeighbor( new Position( currentPos.X + 1, currentPos.Y + 1 ) );
-			CheckNeighbor( new Position( currentPos.X + 1, currentPos.Y + 0 ) );
-			CheckNeighbor( new Position( currentPos.X + 0, currentPos.Y + 1 ) );
-			//CheckNeighbor( new Position( currentPos.X + 1, currentPos.Y - 1 ) );
+			//CheckNeighbor( in currentPos, new Position( currentPos.X + 1, currentPos.Y + 1 ) );
+			CheckNeighbor( in currentPos, new Position( currentPos.X + 1, currentPos.Y + 0 ) );
+			CheckNeighbor( in currentPos, new Position( currentPos.X + 0, currentPos.Y + 1 ) );
+			//CheckNeighbor( in currentPos, new Position( currentPos.X + 1, currentPos.Y - 1 ) );
 
-			//CheckNeighbor( new Position( currentPos.X - 1, currentPos.Y - 1 ) );
-			CheckNeighbor( new Position( currentPos.X - 1, currentPos.Y - 0 ) );
-			CheckNeighbor( new Position( currentPos.X - 0, currentPos.Y - 1 ) );
-			//CheckNeighbor( new Position( currentPos.X - 1, currentPos.Y + 1 ) );
+			//CheckNeighbor( in currentPos, new Position( currentPos.X - 1, currentPos.Y - 1 ) );
+			CheckNeighbor( in currentPos, new Position( currentPos.X - 1, currentPos.Y - 0 ) );
+			CheckNeighbor( in currentPos, new Position( currentPos.X - 0, currentPos.Y - 1 ) );
+			//CheckNeighbor( in currentPos, new Position( currentPos.X - 1, currentPos.Y + 1 ) );
 
-			void CheckNeighbor( Position position )
+			void CheckNeighbor( in Position currentPosition, Position position )
 			{
 				if ( position.X < 0 || position.X >= Width || position.Y < 0 || position.Y >= Height )
 				{
@@ -122,12 +122,12 @@ public class AStarWorldSnapshot
 				}
 
 				var next = GetNode( idx );
-				var newG = current.G;
+				var newG = current.G + Position.Distance( in currentPosition, in position );
 				if ( next.Parent == null ) // never set any of these values yet
 				{
 					next.Parent = current;
 					next.G = newG;
-					next.H = Position.Distance( FromIndex( next.Index ), end );
+					next.H = Position.Distance( in position, in end );
 				}
 				else if ( newG < next.G )
 				{
@@ -170,12 +170,12 @@ public class AStarWorldSnapshot
 
 		public int CompareTo( Node other )
 		{
-			if ( ReferenceEquals( this, other ) )
+			if ( ReferenceEquals( this, other ) || Index == other.Index )
 			{
 				return 0;
 			}
 
-			return -(F.CompareTo( other.F )); // descending by F
+			return F < other.F ? 1 : -1; // descending by F
 		}
 	}
 }
