@@ -1,4 +1,4 @@
-﻿buildingselector {
+﻿.component {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -9,8 +9,15 @@
     border-top: 5px solid #333;
     border-left: 5px solid #333;
     padding: 3px;
-    flex-direction: row;
-    flex-wrap: wrap;
+    
+    transition: all 0.15s linear;
+    transform: translateX(100%);
+    opacity: 0;
+
+    &.selected {
+        transform: translateX(0%);
+        opacity: 1;
+    }
 
     button {
         width: 80px;
@@ -24,5 +31,11 @@
             background-color: #777;
             font-weight: bold;
         }
+    }
+
+    button.deselect {
+        position: absolute;
+        bottom: 0;
+        right: 0;
     }
 }

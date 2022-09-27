@@ -33,13 +33,13 @@ public class MouseControl : HudComponent
 		base.OnButtonEvent( e );
 	}
 
-	private static bool TryPickPosition( out Vector3 position, out Entity entity )
+	private static bool TryPickPosition( out Vector3 position, out BaseBuilding entity )
 	{
 		var result = TraceFromCursor().Run();
 		if ( result.Hit )
 		{
 			position = result.EndPosition;
-			entity = result.Entity;
+			entity = result.Entity as BaseBuilding;
 			return true;
 		}
 
