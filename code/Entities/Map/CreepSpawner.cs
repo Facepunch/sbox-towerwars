@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Sandbox;
-using SandboxEditor;
+using Editor;
 
 namespace TowerWars;
 

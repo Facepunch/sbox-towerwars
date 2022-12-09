@@ -12,10 +12,10 @@ public class MouseControl : HudComponent
 		_mouseWheel = (int)(value * -1.0f);
 	}
 
-	[Event.BuildInput]
-	public virtual void ProcessClientInput( InputBuilder input )
+	[Event.Client.BuildInput]
+	public virtual void ProcessClientInput()
 	{
-		input.MouseWheel = _mouseWheel;
+		Input.MouseWheel = _mouseWheel;
 		_mouseWheel = 0;
 	}
 
@@ -50,7 +50,7 @@ public class MouseControl : HudComponent
 
 	private static Trace TraceFromCursor()
 	{
-		var ray = new Ray( CurrentView.Position, Screen.GetDirection( Mouse.Position ) );
-		return Trace.Ray( ray.Origin, ray.Origin + ray.Direction * 2500 );
+		var ray = new Ray( Camera.Position, Screen.GetDirection( Mouse.Position ) );
+		return Trace.Ray( ray.Position, ray.Position + ray.Forward * 2500 );
 	}
 }

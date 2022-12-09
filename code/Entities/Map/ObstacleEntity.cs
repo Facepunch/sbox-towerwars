@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Sandbox;
-using SandboxEditor;
+using Editor;
 using TowerWars.Pathfinding;
 
 namespace TowerWars;

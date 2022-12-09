@@ -11,7 +11,7 @@ namespace TowerWars;
 /// You can use this to create things like HUDs and declare which player class
 /// to use for spawned players.
 /// </summary>
-public partial class TowerWarsGame : Game
+public partial class TowerWarsGame : GameManager
 {
 	public override void PostLevelLoaded()
 	{

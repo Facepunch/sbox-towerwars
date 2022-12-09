@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<AssemblyName>tower_wars</AssemblyName>
 		<PackageId>tower_wars</PackageId>
-		<LangVersion>10</LangVersion>
+		<LangVersion>11</LangVersion>
 		<NoWarn>1701;1702;1591;</NoWarn>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<DefineConstants>SANDBOX;ADDON;DEBUG</DefineConstants>
@@ -20,12 +20,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AdditionalFiles Include="**/*.razor" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Using Include="Sandbox.Internal.GlobalGameNamespace" Static="true" />
 	</ItemGroup>
 
   <PropertyGroup>
-	<OutputPath>../.vs/output/</OutputPath>
-	<DocumentationFile>../.vs/output/tower_wars.xml</DocumentationFile>
+	<OutputPath>..\..\..\Program Files (x86)\Steam\steamapps\common\sbox/.vs/output/</OutputPath>
+	<DocumentationFile>..\..\..\Program Files (x86)\Steam\steamapps\common\sbox/.vs/output/tower_wars.xml</DocumentationFile>
 	<RootNamespace>Sandbox</RootNamespace>
 	<Nullable>disable</Nullable>
   </PropertyGroup>
@@ -41,13 +45,8 @@
 	</ItemGroup>
 
   <ItemGroup>
-<ProjectReference Include="C:\Program Files (x86)\Steam\steamapps\common\sbox\addons\base\code\base.csproj" />
-  </ItemGroup>
+		<ProjectReference Include="C:\Program Files (x86)\Steam\steamapps\common\sbox\addons\base\code\base.csproj" />
 
-  <ItemGroup>
-    <None Update="UI\Components\InspectTowerComponent.html">
-      <DependentUpon>InspectTowerComponent.cs</DependentUpon>
-    </None>
   </ItemGroup>
 
 </Project>
